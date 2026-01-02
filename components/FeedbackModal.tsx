@@ -1,11 +1,12 @@
 
 import React from 'react';
-import { Problem, UserSubmission } from '../types';
+import { Problem, Submission } from '../types';
 import LatexRenderer from './LatexRenderer';
 
 interface FeedbackModalProps {
   problem: Problem;
-  submission: UserSubmission;
+  // Fixed: Corrected UserSubmission to Submission
+  submission: Submission;
   onNext: () => void;
 }
 

@@ -12,12 +12,13 @@ interface ProblemViewProps {
 const ProblemView: React.FC<ProblemViewProps> = ({ problem, onSubmit, isSubmitting }) => {
   const [userAnswer, setUserAnswer] = useState('');
 
+  // Fixed: Difficulty is a type alias for string literals. Replaced non-existent enum-like access with actual strings.
   const getDifficultyColor = (diff: Difficulty) => {
     switch (diff) {
-      case Difficulty.EASY: return 'bg-green-100 text-green-700';
-      case Difficulty.MEDIUM: return 'bg-blue-100 text-blue-700';
-      case Difficulty.HARD: return 'bg-orange-100 text-orange-700';
-      case Difficulty.KILLER: return 'bg-red-100 text-red-700';
+      case '쉬움': return 'bg-green-100 text-green-700';
+      case '보통': return 'bg-blue-100 text-blue-700';
+      case '어려움': return 'bg-orange-100 text-orange-700';
+      case '킬러': return 'bg-red-100 text-red-700';
       default: return 'bg-gray-100 text-gray-700';
     }
   };
@@ -39,7 +40,8 @@ const ProblemView: React.FC<ProblemViewProps> = ({ problem, onSubmit, isSubmitti
           {problem.difficulty}
         </span>
         <span className="text-xs text-slate-500 font-medium">
-          출처: {problem.sourceType}
+          {/* Fixed: Changed problem.sourceType to problem.source */}
+          출처: {problem.source}
         </span>
       </div>
 

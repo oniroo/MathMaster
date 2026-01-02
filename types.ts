@@ -1,10 +1,5 @@
 
-export enum Difficulty {
-  EASY = '쉬움',
-  MEDIUM = '보통',
-  HARD = '어려움',
-  KILLER = '킬러'
-}
+export type Difficulty = '쉬움' | '보통' | '어려움' | '킬러';
 
 export interface Problem {
   id: string;
@@ -13,21 +8,17 @@ export interface Problem {
   correctAnswer: string;
   explanation: string;
   difficulty: Difficulty;
-  sourceType: string; // e.g., "평가원 기출 변형", "수능 연계"
+  source: string;
 }
 
-export interface UserSubmission {
+export interface Submission {
   problemId: string;
   userAnswer: string;
   isCorrect: boolean;
-  timestamp: number;
 }
 
 export interface QuizState {
-  currentProblem: Problem | null;
-  history: UserSubmission[];
-  isLoading: boolean;
-  error: string | null;
+  problem: Problem | null;
+  history: Submission[];
+  loading: boolean;
 }
-
-export type ProblemResponse = Omit<Problem, 'id'>;
